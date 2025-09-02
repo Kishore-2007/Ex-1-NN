@@ -1,5 +1,5 @@
-<H3>ENTER YOUR NAME</H3>
-<H3>ENTER YOUR REGISTER NO.</H3>
+<H3>ENTER YOUR NAME : KISHORE S</H3>
+<H3>ENTER YOUR REGISTER NO : 212224230130</H3>
 <H3>EX. NO.1</H3>
 <H3>DATE</H3>
 <H1 ALIGN =CENTER> Introduction to Kaggle and Data preprocessing</H1>
@@ -37,11 +37,85 @@ STEP 5:Normalizing the data<BR>
 STEP 6:Splitting the data into test and train<BR>
 
 ##  PROGRAM:
-TYPE YOUR CODE HERE
+```python
+import pandas as pd
+import io
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.model_selection import train_test_split
 
+data = pd.read_csv("Churn_Modelling.csv")
+data
+data.head()
+
+X=data.iloc[:,:-1].values
+X
+
+y=data.iloc[:,-1].values
+y
+
+data.isnull().sum()
+
+data.duplicated()
+
+data.describe()
+
+data = data.drop(['Surname', 'Geography','Gender'], axis=1)
+data.head()
+
+scaler=MinMaxScaler()
+df1=pd.DataFrame(scaler.fit_transform(data))
+print(df1)
+
+X_train ,X_test ,y_train,y_test=train_test_split(X,y,test_size=0.2)
+
+X_train
+
+X_test
+
+print("Lenght of X_test ",len(X_test))
+
+
+```
 
 ## OUTPUT:
-SHOW YOUR OUTPUT HERE
+Dataset:
+
+<img width="1024" height="366" alt="Screenshot 2025-09-02 074006" src="https://github.com/user-attachments/assets/84dde3e2-f23b-4f9e-b3f7-bbe25e9cb077" />
+
+X Values:
+
+<img width="884" height="208" alt="Screenshot 2025-09-02 074014" src="https://github.com/user-attachments/assets/5742a2f4-f0d5-4d13-8d17-f0bbaed86423" />
+
+Y Values:
+
+<img width="731" height="63" alt="Screenshot 2025-09-02 074021" src="https://github.com/user-attachments/assets/fae4f64b-ef08-4570-978c-a1f9aa8703e1" />
+
+Null Values:
+
+<img width="385" height="413" alt="Screenshot 2025-09-02 074027" src="https://github.com/user-attachments/assets/8087487e-2b4e-46ac-b25f-0ac0f92ff02b" />
+
+Duplicated Values:
+
+<img width="452" height="343" alt="Screenshot 2025-09-02 074034" src="https://github.com/user-attachments/assets/5a012785-a301-4986-b53f-1e52f00576d6" />
+
+Description:
+
+<img width="1032" height="272" alt="Screenshot 2025-09-02 074040" src="https://github.com/user-attachments/assets/a421d34c-556e-4d89-b803-7dd416c6574f" />
+
+Normalized Dataset:
+
+<img width="973" height="737" alt="Screenshot 2025-09-02 074048" src="https://github.com/user-attachments/assets/63a3971c-fbe3-438e-898e-842279494a67" />
+
+Training Data:
+
+<img width="929" height="196" alt="Screenshot 2025-09-02 074057" src="https://github.com/user-attachments/assets/43b63bae-145b-49a3-81ea-7474a423fda9" />
+
+Testing Data:
+
+<img width="976" height="198" alt="Screenshot 2025-09-02 074104" src="https://github.com/user-attachments/assets/127e561b-2b60-4fb8-ae96-2c372f66ee62" />
+
+<img width="264" height="30" alt="Screenshot 2025-09-02 074116" src="https://github.com/user-attachments/assets/54bfdf31-c737-4a6c-accd-abfc03971c99" />
 
 
 ## RESULT:
